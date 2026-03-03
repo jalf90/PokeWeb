@@ -1,0 +1,23 @@
+@let pokemonResponse = $pokemonResponse();
+<ul>
+    @for(pokemon of pokemonResponse?.items; track pokemon.name) {
+        <li>
+            <a [routerLink]="['/pokemon', pokemon.name]">
+                {{pokemon.name}}
+            </a>
+        </li>
+    }
+</ul>
+<div class="pagination-wrapper">
+    <nav class="pagination">
+        @if(pokemonResponse?.previous !== null) {
+            <li (click)="handlePrevClick()">Previous</li>
+        }
+        <li>{{$currentPage()}}</li>
+        @if(pokemonResponse?.next !== null) {
+            <li (click)="handleNextClick()">Next</li>
+        }
+    </nav>
+</div>
+
+<router-outlet />

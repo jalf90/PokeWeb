@@ -1,0 +1,1 @@
+export * from './pokemon-detail/pokemon-detail.component';
